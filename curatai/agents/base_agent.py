@@ -18,6 +18,10 @@ class CuratAIAgent:
     and cultural strategists achieve their professional goals.
     """
     
+    # Configuration constants
+    DEFAULT_ACTIONS_PER_STEP = 2  # Number of actions to take per step
+    PROGRESS_INCREMENT = 20  # Progress percentage increase per action step
+    
     def __init__(self, artist_profile: ArtistProfile):
         self.artist_profile = artist_profile
         self.goals: List[Goal] = []
@@ -108,7 +112,7 @@ class CuratAIAgent:
             goal.status = GoalStatus.IN_PROGRESS
         
         # Increment progress
-        goal.progress = min(goal.progress + 20, 100)
+        goal.progress = min(goal.progress + self.PROGRESS_INCREMENT, 100)
         
         result = {
             "goal_id": goal.goal_id,
@@ -305,5 +309,5 @@ Format your response as a clear adaptation strategy."""
             ]
         
         # Return a subset based on current progress
-        num_actions = min(2, len(base_actions))
+        num_actions = min(self.DEFAULT_ACTIONS_PER_STEP, len(base_actions))
         return base_actions[:num_actions]

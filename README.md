@@ -1,6 +1,6 @@
 # CuratAI - AI Agents for Artists and Cultural Strategists
 
-CuratAI empowers artists and cultural strategists to achieve professional resolutions such as securing speaking opportunities, exhibitions, and grants. It embodies the hackathon's definition of agentic AI by autonomously reasoning, acting, and adapting to obstacles, while leveraging Opik for orchestration, monitoring, and evaluation.
+CuratAI empowers artists and cultural strategists to achieve professional goals such as securing speaking opportunities, exhibitions, and grants. It embodies the hackathon's definition of agentic AI by autonomously reasoning, acting, and adapting to obstacles, while leveraging Opik for orchestration, monitoring, and evaluation.
 
 ## 🎯 Features
 
