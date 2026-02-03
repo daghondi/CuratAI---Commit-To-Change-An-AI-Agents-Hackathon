@@ -38,7 +38,8 @@ env/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb
+# Note: Demo notebooks are included (hackathon_demo.ipynb)
+# *.ipynb
 
 # Testing
 .pytest_cache/
