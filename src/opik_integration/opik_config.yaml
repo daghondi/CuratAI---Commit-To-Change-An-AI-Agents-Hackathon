@@ -1,0 +1,185 @@
+yaml
+# Opik Configuration File
+# Centralized configuration for CuratAI monitoring and orchestration
+
+opik:
+  # Opik API Configuration
+  api_key: "${OPIK_API_KEY}"  # Set via environment variable
+  workspace: "curatai-workspace"
+  project_name: "curataI-core"
+  
+  # Logging Settings
+  logging:
+    level: "INFO"
+    log_llm_calls: true
+    log_agent_calls: true
+    log_metrics: true
+    log_errors: true
+  
+  # Experiment Tracking
+  experiments:
+    enabled: true
+    auto_log_metrics: true
+    auto_capture_variants: true
+  
+  # Dashboard Configuration
+  dashboard:
+    enabled: true
+    refresh_interval_seconds: 30
+    public_url: "https://opik.comet.ml/curatai"
+    sections:
+      - agent_workflows
+      - experiments
+      - metrics
+      - logs
+  
+  # Cost Tracking
+  cost_tracking:
+    enabled: true
+    track_tokens: true
+    alert_threshold_daily: 100  # Alert if daily cost exceeds $100
+    alert_threshold_monthly: 2000  # Alert if monthly cost exceeds $2000
+  
+  # Retention Policies
+  retention:
+    logs_days: 90
+    metrics_days: 365
+    experiments_days: 180
+  
+  # LLM Integration
+  llm:
+    providers:
+      - openai
+      - anthropic
+    tracking:
+      track_tokens: true
+      track_cost: true
+      track_latency: true
+      capture_prompts: true
+      capture_responses: true
+
+# Agent Configuration
+agents:
+  opportunity_scout:
+    name: "Opportunity Scout Agent"
+    description: "Finds and filters relevant opportunities"
+    enabled: true
+    metrics:
+      - scout_recall
+      - agent_execution_time
+  
+  proposal_drafter:
+    name: "Proposal Drafter Agent"
+    description: "Generates tailored proposals"
+    enabled: true
+    metrics:
+      - draft_quality
+      - token_cost
+      - agent_execution_time
+  
+  adaptive_strategy:
+    name: "Adaptive Strategy Agent"
+    description: "Learns from outcomes and refines strategy"
+    enabled: true
+    metrics:
+      - strategy_improvement
+      - acceptance_rate
+  
+  calendar_manager:
+    name: "Calendar Manager Agent"
+    description: "Manages deadlines and scheduling"
+    enabled: true
+    metrics:
+      - deadline_adherence
+      - agent_execution_time
+
+# Experiment Definitions
+experiments:
+  tone_comparison:
+    name: "Proposal Tone Comparison"
+    description: "Compare formal, engaging, and impact-driven tones"
+    variants:
+      - formal
+      - engaging
+      - impact_driven
+    metrics:
+      - draft_quality
+      - user_review_time
+      - user_preference_votes
+    duration_days: 30
+    status: "active"
+  
+  strategy_adaptation:
+    name: "Strategy Adaptation"
+    description: "Test achievement-first vs. impact-first strategy"
+    variants:
+      - achievement_first
+      - impact_first
+    metrics:
+      - acceptance_rate
+      - strategy_improvement
+    duration_days: 60
+    status: "active"
+  
+  venue_selection:
+    name: "Venue Selection Strategy"
+    description: "Optimize for prestigious vs. accessible venues"
+    variants:
+      - prestigious
+      - accessible
+      - mixed
+    metrics:
+      - acceptance_rate
+      - user_satisfaction
+    duration_days: 45
+    status: "planning"
+
+# Metrics Definitions
+metrics:
+  scout_recall:
+    description: "Percentage of relevant opportunities found"
+    type: "gauge"
+    unit: "percent"
+    target: 0.85
+  
+  draft_quality:
+    description: "Quality score of generated proposals"
+    type: "gauge"
+    unit: "score"
+    target: 7.5
+  
+  user_review_time:
+    description: "Time user spends reviewing proposals"
+    type: "histogram"
+    unit: "minutes"
+    target: 10
+  
+  acceptance_rate:
+    description: "Percentage of submissions accepted"
+    type: "gauge"
+    unit: "percent"
+    target: 0.35
+  
+  strategy_improvement:
+    description: "Month-over-month improvement in acceptance rate"
+    type: "gauge"
+    unit: "percent"
+    target: 0.05
+  
+  token_cost:
+    description: "Average tokens per proposal generation"
+    type: "gauge"
+    unit: "tokens"
+    target: 2000
+  
+  deadline_adherence:
+    description: "Percentage of deadlines met"
+    type: "gauge"
+    unit: "percent"
+    target: 0.98
+  
+  agent_execution_time:
+    description: "Time for agent task completion"
+    type: "histogram"
+    unit: "seconds"
+    target: 30

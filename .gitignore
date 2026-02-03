@@ -1,0 +1,91 @@
+# Git Ignore for CuratAI
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Logs
+*.log
+logs/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Config (sensitive)
+config.local.json
+secrets.json
+credentials.json
+
+# Data files (large)
+data/
+*.csv
+*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API Keys and Tokens
+OPIK_API_KEY
+.opik/
+.ipfs/
+
+# Build artifacts
+*.whl
+*.tar.gz
+
+# Node modules (if using web frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Generated files
+*.generated.py
